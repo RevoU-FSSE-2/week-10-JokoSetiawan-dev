@@ -15,7 +15,7 @@ const app = express();
 const port = process.env.PORT || 9000
 
 app.use(bodyParser.json());
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(yaml.parse(require('fs').readFileSync('./doc/openapi.yaml', 'utf8'))))
+app.use('/', swaggerUi.serve, swaggerUi.setup(yaml.parse(require('fs').readFileSync('./doc/openapi.yaml', 'utf8'))))
 app.use(OpenApiValidator.middleware({ 
   apiSpec: './doc/openapi.yaml'
 }))
